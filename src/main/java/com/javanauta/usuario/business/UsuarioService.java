@@ -117,6 +117,8 @@ public class UsuarioService {
         return usuarioConverter.paraEnderecoDTO(enderecoEntity);
 
 
+
+
     }
 
     public TelefoneDTO cadastroTefone(String token, TelefoneDTO telefoneDTO){
