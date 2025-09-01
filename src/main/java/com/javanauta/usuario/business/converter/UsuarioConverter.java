@@ -30,10 +30,10 @@ public class UsuarioConverter {
         return Endereco.builder()
                 .rua(enderecoDTO.getRua())
                 .numero(enderecoDTO.getNumero())
-                .cidade(enderecoDTO.getCidade())
                 .complemento(enderecoDTO.getComplemento())
-                .cep(enderecoDTO.getCep())
+                .cidade(enderecoDTO.getCidade())
                 .estado(enderecoDTO.getEstado())
+                .cep(enderecoDTO.getCep())
                 .build();
     }
 
