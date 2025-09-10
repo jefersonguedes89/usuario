@@ -14,7 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("usuario")
 @RequiredArgsConstructor
 public class UsuarioController {
 
@@ -39,6 +39,7 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<UsuarioDTO> buscarUsuarioPorEmail(@RequestParam("email") String email){
+        UsuarioDTO usuarioDTO = usuarioService.buscarUsuarioPorEmail(email);
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
     }
 
