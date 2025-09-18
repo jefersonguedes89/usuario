@@ -1,9 +1,11 @@
 package com.javanauta.usuario.controller;
 
 import com.javanauta.usuario.business.UsuarioService;
+import com.javanauta.usuario.business.ViaCepService;
 import com.javanauta.usuario.business.dto.EnderecoDTO;
 import com.javanauta.usuario.business.dto.TelefoneDTO;
 import com.javanauta.usuario.business.dto.UsuarioDTO;
+import com.javanauta.usuario.infrastructure.clients.ViaCepDTO;
 import com.javanauta.usuario.infrastructure.entity.Usuario;
 import com.javanauta.usuario.infrastructure.security.JwtUtil;
 import com.javanauta.usuario.infrastructure.security.SecurityConfig;
@@ -28,6 +30,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final ViaCepService viaCepService;
 
     @PostMapping
     @Operation(summary = "Salvar Usuário", description = "Cria um novo usuário")
@@ -99,6 +102,17 @@ public class UsuarioController {
                                                         @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(usuarioService.cadastroTefone(token, telefoneDTO));
     }
+
+
+    @GetMapping("/endereco/{cep}")
+    @Operation(summary = "Buscar CEP", description = "Busca endereço do usuário")
+    @ApiResponse(responseCode = "200", description = "CEP encontrado")
+    @ApiResponse(responseCode = "403", description = "CEP inválido")
+    @ApiResponse(responseCode = "400", description = "CEP não encontrado")
+    public ResponseEntity<ViaCepDTO> buscarDadosCep(@PathVariable("cep") String cep){
+        return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
+    }
+
 
 }
 
