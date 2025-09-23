@@ -19,7 +19,7 @@ public class ViaCepService {
 
         ViaCepDTO viaCepDTO = viaCepClient.buscarDadosEndereco(processarCep(cep));
 
-        if(viaCepDTO.cep == null || viaCepDTO.cep.isEmpty()){
+        if(viaCepDTO.getCep() == null || viaCepDTO.getCep().isEmpty()){
             throw new ResourceNotFoundException("O CEP não foi localizado");
         }
 
