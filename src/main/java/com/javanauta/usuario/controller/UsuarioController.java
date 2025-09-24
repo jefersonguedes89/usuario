@@ -108,6 +108,9 @@ public class UsuarioController {
     @ApiResponse(responseCode = "400", description = "CEP não encontrado")
     public ResponseEntity<ViaCepDTO> buscarDadosCep(@PathVariable("cep") String cep){
         return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
+
+
+
     }
 
 
